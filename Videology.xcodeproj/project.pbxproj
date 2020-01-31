@@ -90,8 +90,8 @@
 		309324BA23DFC8E9005DBE0F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				3088D97B23E3ACE4002F30FF /* MainView.swift */,
 				3088D97F23E3BF3B002F30FF /* MovieCell.swift */,
+				3088D97B23E3ACE4002F30FF /* MainView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -99,8 +99,8 @@
 		309324BB23DFC8F4005DBE0F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				30CA127A23E3C9CA001AEAD8 /* MovieData.swift */,
 				30CA127C23E3D019001AEAD8 /* MovieManager.swift */,
+				30CA127A23E3C9CA001AEAD8 /* MovieData.swift */,
 				30CA127E23E3D041001AEAD8 /* MovieModel.swift */,
 			);
 			name = Model;

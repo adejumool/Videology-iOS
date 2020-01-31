@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
 
     let pageView = MainView()
+    let movieCell = MovieCell()
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -10,29 +10,53 @@ import UIKit
 
 class MainView: UIView {
     
+    var movieManager = MovieManager()
+    var movies: [MovieModel] = []
+    
+    
     let tableView: UITableView = {
         let view  = UITableView()
-        view.backgroundColor = .green
         return view
     }()
 
     func configureTableView(){
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.rowHeight = 200
-        
+        movieManager.delegate = self
+        movieManager.getMovies()
+    }
+
+}
+
+// MARK: - WeatherManagerDelegate
+
+extension MainView: MovieManagerDelegate{
+    func fetchMovie(_ movieManager: MovieManager, movies: [MovieModel]) {
+        DispatchQueue.main.async {
+            self.movies = movies
+            self.tableView.delegate = self
+            self.tableView.dataSource = self
+            self.tableView.rowHeight = 200
+            self.tableView.register(MovieCell.self, forCellReuseIdentifier: "MovieCell")
+        }
+    }
+    
+    func didFailWithError(error: Error) {
+        print(error)
     }
 }
+
 extension MainView: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        return movies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        UITableViewCell()
+        //print(movies)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell") as! MovieCell
+        let movie = movies[indexPath.row]
+        cell.set(movie: movie)
+
+        return cell
     }
-    
-    
 }
 extension ViewController{
     func setUpPage(){
