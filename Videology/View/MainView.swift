@@ -34,7 +34,7 @@ extension MainView: MovieManagerDelegate{
             self.movies = movies
             self.tableView.delegate = self
             self.tableView.dataSource = self
-            self.tableView.rowHeight = 200
+            self.tableView.rowHeight = 210
             self.tableView.register(MovieCell.self, forCellReuseIdentifier: "MovieCell")
         }
     }
@@ -53,6 +53,7 @@ extension MainView: UITableViewDelegate, UITableViewDataSource{
         //print(movies)
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell") as! MovieCell
         let movie = movies[indexPath.row]
+        cell.selectionStyle = .none
         cell.set(movie: movie)
 
         return cell

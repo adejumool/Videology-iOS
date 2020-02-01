@@ -6,10 +6,10 @@
 //  Copyright © 2020 Tobi Adejumo. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct MovieModel{
-    let movieImage: String
+    let movieImage: UIImage
     let movieTitle: String
     let movieDescription: String
 }

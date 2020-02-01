@@ -31,20 +31,17 @@ class MovieCell: UITableViewCell {
     let movieTitle: UILabel = {
         let view  = UILabel()
     
-        view.backgroundColor = .green
+        //view.backgroundColor = .green
         view.textAlignment = .center
         
-        //view.heightAnchor.constraint(equalToConstant: 100).isActive = true
         return view
     }()
     
     let movieDescription: UILabel = {
         let view  = UILabel()
         
-        view.backgroundColor = .red
-        view.adjustsFontSizeToFitWidth = true
-        view.numberOfLines = 0
-        //view.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        view.textAlignment = .center
+        view.numberOfLines = 7
         return view
     }()
 
@@ -53,17 +50,14 @@ class MovieCell: UITableViewCell {
         [movieImage,movieTitle,movieDescription].forEach{addSubview($0)}
         movieImage.anchor(top: nil , bottom: nil, leading: leadingAnchor, trailing: movieTitle.leadingAnchor, centerY: centerYAnchor, centerX: nil)
         movieTitle.anchor(top: topAnchor, bottom: movieDescription.topAnchor, leading: movieImage.trailingAnchor, trailing: trailingAnchor, centerY: nil, centerX: nil)
-        movieDescription.anchor(top: movieTitle.bottomAnchor, bottom: bottomAnchor, leading: movieImage.trailingAnchor, trailing: trailingAnchor, centerY: nil, centerX: nil)
+        movieDescription.anchor(top: movieTitle.bottomAnchor, bottom: bottomAnchor, leading: movieImage.trailingAnchor, trailing: trailingAnchor, centerY: nil, centerX: nil, padding: .init(top: 0, left: 10, bottom: 0, right: -10))
     }
     
     func set(movie: MovieModel){
-        movieImage.image = UIImage(data: try! Data(contentsOf: URL(string:"https://image.tmdb.org/t/p/w342"+movie.movieImage)!))
         movieTitle.text = movie.movieTitle
         movieDescription.text = movie.movieDescription
+        movieImage.image = movie.movieImage
         
     }
-    
 }
-
-
 

@@ -55,7 +55,7 @@ struct MovieManager{
                 let movieImage = decodedData.results[num].poster_path
                 let movieTitle = decodedData.results[num].title
                 let movieDescription = decodedData.results[num].overview
-                let movieAndInfo = MovieModel(movieImage: movieImage, movieTitle: movieTitle, movieDescription: movieDescription)
+                let movieAndInfo = MovieModel(movieImage: UIImage(data: try! Data(contentsOf: URL(string:"https://image.tmdb.org/t/p/w342"+movieImage)!))!, movieTitle: movieTitle, movieDescription: movieDescription)
                 movies.append(movieAndInfo)
             }
             return movies
